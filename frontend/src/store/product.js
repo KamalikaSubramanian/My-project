@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import axios from "axios";
+import { API_BASE } from "../config.js";
+
 // Zustand is a state management library for React.It lets you store global state (data that multiple components can share) in one place, instead of passing props around everywhere.
 // create is the function exported from Zustand used to make a store.You call create() and pass in a function that defines your state and actions.
 // set lets you update the state.Inside, you define:state → (products: []) actions → (fetchProducts, deleteProduct, etc.).
@@ -15,7 +16,7 @@ export const useProductStore = create((set) => ({
 		}
 		const token = localStorage.getItem("token");
 		try {
-			const res = await fetch("/api/products", {
+			const res = await fetch(`${API_BASE}/api/products`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -48,7 +49,7 @@ export const useProductStore = create((set) => ({
 		const token = localStorage.getItem("token");
 
 		try {
-			const res = await fetch("/api/products", {
+			const res = await fetch(`${API_BASE}/api/products`, {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${token}`,
@@ -72,7 +73,7 @@ export const useProductStore = create((set) => ({
 	deleteProduct: async (pid) => {
 		const token = localStorage.getItem("token");
 		try {
-			const res = await fetch(`/api/products/${pid}`, {
+			const res = await fetch(`${API_BASE}/api/products/${pid}`, {
 				method: "DELETE",
 				headers: {
 					Authorization: `Bearer ${token}`
@@ -100,7 +101,7 @@ export const useProductStore = create((set) => ({
 	updateProduct: async (pid, updatedProduct) => {
 		const token = localStorage.getItem("token");
 		try {
-			const res = await fetch(`/api/products/${pid}`, {
+			const res = await fetch(`${API_BASE}/api/products/${pid}`, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",
@@ -133,8 +134,7 @@ export const useProductStore = create((set) => ({
 	fetchProductById: async (id) => {
 		const token = localStorage.getItem("token");
 		try {
-			const API_BASE_URL = "http://localhost:5001";
-			const res = await fetch(`${API_BASE_URL}/api/products/${id}`, {
+			const res = await fetch(`${API_BASE}/api/products/${id}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { API_BASE } from "../config.js";
 
 export const useOrderStore = create((set) => ({
     orders: [],
@@ -6,8 +7,7 @@ export const useOrderStore = create((set) => ({
     placeOrder: async (userId, products, address, paymentMethod) => {
         const token = localStorage.getItem("token");
         try {
-            const API_BASE_URL = "http://localhost:5001";
-            const res = await fetch(`${API_BASE_URL}/api/orders/`, {
+            const res = await fetch(`${API_BASE}/api/orders/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,8 +40,7 @@ export const useOrderStore = create((set) => ({
         set({ loading: true })
         const token = localStorage.getItem("token");
         try {
-            const API_BASE_URL = "http://localhost:5001";
-            const res = await fetch(`${API_BASE_URL}/api/orders/${userId}`, {
+            const res = await fetch(`${API_BASE}/api/orders/${userId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

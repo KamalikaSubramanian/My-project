@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { API_BASE } from "../config.js";
 
 export const useCartStore = create((set) => ({
   cart: null,
@@ -7,7 +8,7 @@ export const useCartStore = create((set) => ({
   addToCart: async (userId, productId) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("/api/carts/", {
+      const res = await fetch(`${API_BASE}/api/carts/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +33,7 @@ export const useCartStore = create((set) => ({
     const token = localStorage.getItem("token");
     set({ loading: true });
     try {
-      const res = await fetch(`/api/carts/${userId}`, {
+      const res = await fetch(`${API_BASE}/api/carts/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -52,7 +53,7 @@ export const useCartStore = create((set) => ({
   updateQuantity: async (userId, productId, action) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("/api/carts/", {
+      const res = await fetch(`${API_BASE}/api/carts/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +79,7 @@ export const useCartStore = create((set) => ({
   removeItem: async (userId, productId) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch("/api/carts/", {
+      const res = await fetch(`${API_BASE}/api/carts/`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { API_BASE } from "../config.js";
 
 export const useUserStore = create((set) => ({
     user: null,
@@ -10,7 +11,7 @@ export const useUserStore = create((set) => ({
             if (!newUser.username || !newUser.password || !newUser.role) {
                 return { success: false, message: "Please provide all the fields" };
             }
-            const res = await fetch("/api/auth/register", {
+            const res = await fetch(`${API_BASE}/api/auth/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -33,7 +34,7 @@ export const useUserStore = create((set) => ({
     },
     loginUser: async (Credentials) => {
         try {
-            const res = await fetch("/api/auth/login", {
+            const res = await fetch(`${API_BASE}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(Credentials)
