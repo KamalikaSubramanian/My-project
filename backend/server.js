@@ -27,6 +27,15 @@ app.use(
   })
 );
 
+// app.use(
+//   cors({
+//     origin: process.env.ALLOWED_ORIGIN || "http://localhost:5173",
+//     methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
+//     credentials: true,
+//   })
+// );
+
+
 // in this filename we get a absolute path of a current file(server.js) and dirname gives the folder nam of a server.js file.
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
