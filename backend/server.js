@@ -20,14 +20,24 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 
+const allowedOrigins = process.env.ALLOWED_ORIGIN
+  ? process.env.ALLOWED_ORIGIN.split(",")
+  : ["http://localhost:5173", "http://localhost:4173"];
+
 app.use(
   cors({
-    origin: [process.env.ALLOWED_ORIGIN || "http://localhost:5173","http://localhost:4173"],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
 );
-
 
 // in this filename we get a absolute path of a current file(server.js) and dirname gives the folder nam of a server.js file.
 // const __filename = fileURLToPath(import.meta.url);
