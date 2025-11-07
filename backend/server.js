@@ -19,21 +19,9 @@ const app = express();
 
 const PORT = process.env.PORT || 5001;
 
-
-const allowedOrigins = process.env.ALLOWED_ORIGIN
-  ? process.env.ALLOWED_ORIGIN.split(",")
-  : ["http://localhost:5173", "http://localhost:4173"];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.log("Blocked by CORS:", origin);
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: process.env.ALLOWED_ORIGIN ||"http://localhost:5173" ,
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
