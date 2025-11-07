@@ -73,6 +73,7 @@ connectDB()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
+      console.log("✅ Allowed origins:", allowedOrigins);
     });
   })
   .catch((err) => {
