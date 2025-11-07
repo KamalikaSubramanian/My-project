@@ -19,21 +19,14 @@ const app = express();
 
 const PORT = process.env.PORT || 5001;
 
+
 app.use(
   cors({
-    origin: ["http://localhost:5173","http://localhost:4173"],
+    origin: [process.env.ALLOWED_ORIGIN || "http://localhost:5173","http://localhost:4173"],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
 );
-
-// app.use(
-//   cors({
-//     origin: process.env.ALLOWED_ORIGIN || "http://localhost:5173",
-//     methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
-//     credentials: true,
-//   })
-// );
 
 
 // in this filename we get a absolute path of a current file(server.js) and dirname gives the folder nam of a server.js file.
