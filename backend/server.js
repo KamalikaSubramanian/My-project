@@ -1,7 +1,5 @@
 import express from "express";
 import dotenv from "dotenv";
-// import path from "path";
-// import { fileURLToPath } from "url";   
 import { connectDB } from "./config/db.js";
 import productRoutes from "./routes/product.route.js";
 import authRoutes from "./routes/authRoutes.js"
@@ -40,9 +38,6 @@ app.use(
   })
 );
 
-// in this filename we get a absolute path of a current file(server.js) and dirname gives the folder nam of a server.js file.
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
 // Middleware - in which allows json in req.body.
 app.use(express.json());
 
@@ -52,21 +47,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/orders", verifyToken, orderRoutes);
 app.use("/api/carts", verifyToken, cartroutes)
 
-// 👉 Serve React frontend in production - result in frontendpath would be(D:\Desktop\My project\frontend\dist)../frontend/dist = go up one folder (My project), then into frontend/dist .so the path does not involve backend.
-// const frontendPath = path.resolve(__dirname, "../frontend/dist");
-
-// console.log("Serving frontend from:", frontendPath);
-
-// process.env.NODE_ENV tell whether u run development or production
-// if (process.env.NODE_ENV === "production") {
-//   // express.static is a express middleware that serves all files in frontend/dist.
-//   app.use(express.static(frontendPath));
-
-//   // * catch-all route that returns index.html for any GET request not handled earlier. This is necessary for client-side routing (React Router): if the browser requests /about, the server still returns index.html and React Router shows the right page.
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(frontendPath, "index.html"));
-//   });
-// }
 
 // DB + start server
 connectDB()
