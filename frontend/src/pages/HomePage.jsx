@@ -40,7 +40,7 @@ const HomePage = () => {
               Discover a wide range of quality products at the best prices — shop easily, add to cart, and get what you love delivered fast.
             </Text>
             <Text fontSize="lg" fontWeight="semibold" color="green.600">
-              🎉 Limited Time Offer: Get 40% OFF on your Diwali purchase!
+              🎉 Limited Time Offer: Get 40% OFF on your Pongal purchase!
             </Text>
             <Text fontSize="sm" color="gray.600">
               Register to explore exclusive deals or create a new account and
