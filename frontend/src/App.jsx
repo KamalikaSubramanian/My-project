@@ -1,4 +1,4 @@
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
@@ -23,7 +23,7 @@ import MyOrdersListPage from "./pages/MyOrdersListPage.jsx";
 
 function App() {
 	return (
-		<Box minH={"100vh"} bg={useColorModeValue("gray.100", "gray.900")}
+		<Box minH={"100vh"}
 			bgImage="url('https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZCUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D')"
 			bgSize="cover"
 			bgPosition="center"

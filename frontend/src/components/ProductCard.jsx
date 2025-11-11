@@ -7,7 +7,6 @@ import {
   IconButton,
   Image,
   Text,
-  useColorModeValue,
   useDisclosure,
   useToast,
   VStack,
@@ -30,9 +29,6 @@ import { useNavigate } from "react-router-dom";
 const ProductCard = ({ product }) => {
   const [updatedProduct, setUpdatedProduct] = useState(product);
   const [errors, setErrors] = useState({});
-
-  const textColor = useColorModeValue("gray.600", "gray.200");
-  const bg = useColorModeValue("white.100", "gray.800");
 
   const { deleteProduct, updateProduct } = useProductStore();
   const toast = useToast();

@@ -4,7 +4,6 @@ import {
 	Container,
 	Heading,
 	Input,
-	useColorModeValue,
 	useToast,
 	VStack,
 	FormControl,
@@ -100,7 +99,6 @@ const CreatePage = () => {
 
 				<Box
 					w="full"
-					bg={useColorModeValue("white", "gray.800")}
 					p={6}
 					rounded="lg"
 					shadow="md"

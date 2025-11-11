@@ -9,7 +9,6 @@ import {
   Heading,
   Text,
   Select,
-  useColorModeValue,
   HStack,
   useToast,
   FormErrorMessage
@@ -84,7 +83,6 @@ const RegisterPage = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bg={useColorModeValue("gray.100", "gray.900")}
       px={4}
       bgImage="url('https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZCUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D')"
       bgSize="cover"
@@ -93,7 +91,6 @@ const RegisterPage = () => {
       bgAttachment="fixed"
     >
       <Box
-        bg={useColorModeValue("white", "gray.800")}
         p={8}
         borderRadius="lg"
         boxShadow="lg"

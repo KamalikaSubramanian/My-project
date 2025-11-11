@@ -1,11 +1,10 @@
-import { Button, Container, HStack, Text, useColorMode, Grid, Box } from "@chakra-ui/react";
+import { Button, Container, HStack, Text,  Grid, Box } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
 import { IoMoon } from "react-icons/io5";
 import { LuSun } from "react-icons/lu";
 
 const Navbar = () => {
-	const { colorMode, toggleColorMode } = useColorMode();
+
 
 	const token = localStorage.getItem("token");
 	const navigate = useNavigate()
@@ -50,11 +49,6 @@ const Navbar = () => {
 							Logout
 						</Button>
 					)}
-
-
-					<Button onClick={toggleColorMode} colorScheme="teal">
-						{colorMode === "light" ? <IoMoon /> : <LuSun size='20' />}
-					</Button>
 				</HStack>
 			</Grid>
 		</Container>
