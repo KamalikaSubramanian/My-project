@@ -8,6 +8,7 @@ import {
   Stack,
   Heading,
   Text,
+  Select,
   useColorModeValue,
   HStack,
   useToast,
@@ -40,9 +41,6 @@ const RegisterPage = () => {
     }
     else if (newUser.password.trim().length < 6) {
       newErrors.password = "Password must be atleast 6 characters"
-    }
-    if (!newUser.role.trim()) {
-      newErrors.role = "Role is required"
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0
@@ -116,7 +114,7 @@ const RegisterPage = () => {
               name='username'
               value={newUser.username}
               onChange={(e) => setNewUser({ ...newUser, username: e.target.value })} />
-              <FormErrorMessage>{errors.username}</FormErrorMessage>
+            <FormErrorMessage>{errors.username}</FormErrorMessage>
           </FormControl>
 
           <FormControl id="password" isRequired isInvalid={!!errors.password}>
@@ -127,18 +125,25 @@ const RegisterPage = () => {
               name='password'
               value={newUser.password}
               onChange={(e) => setNewUser({ ...newUser, password: e.target.value })} />
-               <FormErrorMessage>{errors.password}</FormErrorMessage>
+            <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
 
           <FormControl id="email" isRequired isInvalid={!!errors.role}>
             <FormLabel>Role</FormLabel>
-            <Input
-              type="email"
-              placeholder="Enter your role"
-              name='role'
+            <Select
+              width="100%"
+              mx="auto"
+              borderColor="gray.400"
+              focusBorderColor="blue.500"
+              borderRadius="md"
+              p={2}
               value={newUser.role}
-              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })} />
-               <FormErrorMessage>{errors.role}</FormErrorMessage>
+              onChange={(e) =>setNewUser({ ...newUser, role: e.target.value })}
+            >
+              <option value="admin">admin</option>
+              <option value="user">user</option>
+            </Select>
+            <FormErrorMessage>{errors.role}</FormErrorMessage>
           </FormControl>
 
           <Button colorScheme="blue" size="lg" mt={2} onClick={handleRegister}>

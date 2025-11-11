@@ -268,7 +268,12 @@ const OrderPage = () => {
           onChange={(e) => setPaymentMethod(e.target.value)}
         >
           <option value="COD">Cash on Delivery</option>
-          <option value="GPay">GPay</option>
+          <option value="PhonePe">PhonePe</option>
+          <option value="Paytm">Paytm</option>
+          <option value="UPI">UPI</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="Debit Card">Debit Card</option>
+          <option value="Net Banking">Net Banking</option>
         </Select>
       </Box>
 
