@@ -43,13 +43,13 @@ const HomePage = () => {
               🎉 Limited Time Offer: Get 40% OFF on your Pongal purchase!
             </Text>
             <Text fontSize="sm" color="gray.600">
-              Register to explore exclusive deals or create a new account and
-              start shopping today.
+             <i>Register to explore exclusive deals or create a new account and
+              start shopping today.</i>
             </Text>
           </Stack>
         </CardBody>
 
-        <CardFooter justify="center" gap={4} color="green.500">
+        <CardFooter justify="center" gap={4} color="red.500">
           {/* <Link to={'/register'}>
             <Button colorScheme="blue" variant="solid">
               Register
