@@ -48,6 +48,7 @@ export const updateProduct = async (req, res) => {
 };
 
 export const deleteProduct = async (req, res) => {
+	// req.params is an object,req.params becomes:{ id: "someValue" }
 	const { id } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(id)) {

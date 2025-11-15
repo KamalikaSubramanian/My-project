@@ -6,7 +6,9 @@ import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 
 const AdminProductPage = () => {
-	const { fetchProducts, products } = useProductStore();
+	const fetchProducts = useProductStore((state)=>state.fetchProducts);
+	const products = useProductStore((state)=>state.products);
+
 	const [selectedType, setselectedType] = useState("All");
 
 	useEffect(() => {

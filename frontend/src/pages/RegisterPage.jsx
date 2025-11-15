@@ -25,7 +25,9 @@ const RegisterPage = () => {
     role: ""
   })
   const [errors, setErrors] = useState({});
-  const { registerUser } = useUserStore();
+  const [loading, setLoading] = useState(false);
+  const registerUser = useUserStore((state) => state.registerUser);
+  
   const toast = useToast();
   const navigate = useNavigate();
 
@@ -50,7 +52,12 @@ const RegisterPage = () => {
     if (!validateForm())
       return;
 
-    const { success, message, role } = await registerUser(newUser);
+    setLoading(true);
+
+    const { success, message } = await registerUser(newUser);
+
+    setLoading(false);
+
     console.log("Register RESULT:", success, message);
     if (!success) {
       toast({
@@ -61,12 +68,7 @@ const RegisterPage = () => {
       });
     }
     else {
-      if (role === "admin") {
-        navigate("/admin/product")
-      }
-      else if (role === "user") {
-        navigate("/user/product")
-      }
+      setTimeout(() => navigate("/login"), 300);
       toast({
         title: "Success",
         description: message,
@@ -74,7 +76,7 @@ const RegisterPage = () => {
         isClosable: true,
       })
     }
-    setNewUser({ name: "", password: "", role: "" })
+    setNewUser({ username: "", password: "", role: "" })
 
   }
   return (
@@ -135,7 +137,7 @@ const RegisterPage = () => {
               borderRadius="md"
               p={2}
               value={newUser.role}
-              onChange={(e) =>setNewUser({ ...newUser, role: e.target.value })}
+              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
             >
               <option value="admin">admin</option>
               <option value="user">user</option>
@@ -162,3 +164,23 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
+
+// In React, whenever something happens (typing, clicking, focusing), React sends an event object to the function.
+// onChange → runs when user types in an input box
+// (e) → e = event object
+// e.target → the HTML element that triggered the event (the input box)
+// e.target.value → the current text inside the input
+// const { registerUser } = useUserStore(); => extracts full store, then destructure,Re-renders when ANY part of the store changes.
+//   const registerUser = useUserStore((state) => state.registerUser); => extracts only registerUser,Re-renders only when registerUser changes
+// (state) => state.registerUser → a selector function.Zustand passes the entire store as state.You return only what you want → here: the registerUser function.
+// Why we use newErrors first?
+// 1️⃣ You need to collect all errors BEFORE updating the UI
+
+// You cannot update errors one by one.
+// Collect all → then show all.
+
+// Directly set errors inside if
+// ❌ Overwrites previous errors, ❌ multiple re-renders, ❌ cannot return validation result
+
+// Build a newErrors object first
+// ✅ Collect all errors, ✅ one re-render, ✅ clean & predictable code, ✅ allows return true/false

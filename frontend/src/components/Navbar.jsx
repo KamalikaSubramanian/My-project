@@ -1,11 +1,7 @@
 import { Button, Container, HStack, Text,  Grid, Box } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
-import { IoMoon } from "react-icons/io5";
-import { LuSun } from "react-icons/lu";
 
 const Navbar = () => {
-
-
 	const token = localStorage.getItem("token");
 	const navigate = useNavigate()
 	const handleLogOut = () => {
@@ -55,3 +51,4 @@ const Navbar = () => {
 	);
 };
 export default Navbar;
+// spacing={4} = 4 units=16 px= 16px( 1 unit = 4px)

@@ -118,3 +118,5 @@ function App() {
 }
 
 export default App;
+// <Routes> is a wrapper component that holds all your <Route> components.
+// <Route> — A single URL - Each <Route> defines:✔ The URL path ✔ The component to render

@@ -6,6 +6,9 @@ import { User } from "../models/userModel.js";
 export const register = async (req, res) => {
     try {
         const { username, password, role } = req.body;
+        if (!username || !password || !role) {
+            return res.status(400).json({success: false,message: "All fields are required"});
+        }
         const existingUser = await User.findOne({username});
         if(existingUser){
             return res.json({success:false,message:"Username already exists"})
@@ -16,21 +19,21 @@ export const register = async (req, res) => {
         const newUser = new User({ username, password: hashedPassword, role })
         
         await newUser.save();
-        const token = jwt.sign(
-            { id: newUser._id, role: newUser.role }, process.env.JWT_SECRET, { expiresIn: "1h" }
-            // jwt.sign(payload,secret key,options)
-        )
-        res.status(201).json({ success: true, message: `User registered with username ${username}`,token,role:newUser.role })
+
+        res.status(201).json({ success: true, message: `User registered with username ${username}`})
     }
     catch (error) {
         console.log("Error :", error.message)
-        return res.status(500).json({ success: false, message: "Something went wrong" ,role:data.newUser.role})
+        return res.status(500).json({ success: false, message: "Something went wrong" })
     }
 }
 
 export const login = async (req, res) => {
     try {
         const { username, password } = req.body;
+        if (!username || !password) {
+            return res.status(400).json({success: false, message: "Username and password are required"});
+        }
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(404).json({ success: false, message: `User with username ${username} not found` })
@@ -57,7 +60,6 @@ export const login = async (req, res) => {
         return res.status(500).json({ success: false, message: "Something went wrong" });
     }
 };
-
 
 
 // Hashing is the process of converting input data (like a password or file) into a fixed-length string of characters using a mathematical algorithm.

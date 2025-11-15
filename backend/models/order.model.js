@@ -71,3 +71,5 @@ const orderSchema = new mongoose.Schema(
 const Order = mongoose.model("Order", orderSchema);
 export default Order;
 
+// products is an array because an order includes multiple items;
+// address is a single object because an order has one delivery address.

@@ -65,7 +65,9 @@ export const getCart = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(userId))
             return res.status(400).json({ success: false, message: "Invalid userId" });
         let cart = await Cart.findOne({ userId }).populate("products.productId");
-
+        // POPULATE -  "Go to the products array → find productId →
+        // look up that ID in the referenced collection →
+        // bring the full product document instead of the ID."
         if (!cart) {
             cart = await Cart.create({ userId, products: [], totalAmount: 0 });
         }
@@ -119,36 +121,36 @@ export const updateCartQuantity = async (req, res) => {
     }
 }
 export const removeFromCart = async (req, res) => {
-  try {
-    const { userId, productId } = req.body;
+    try {
+        const { userId, productId } = req.body;
 
-    if (!mongoose.Types.ObjectId.isValid(userId))
-      return res.status(400).json({ success: false, message: "Invalid userId" });
+        if (!mongoose.Types.ObjectId.isValid(userId))
+            return res.status(400).json({ success: false, message: "Invalid userId" });
 
-    if (!mongoose.Types.ObjectId.isValid(productId))
-      return res.status(400).json({ success: false, message: "Invalid productId" });
+        if (!mongoose.Types.ObjectId.isValid(productId))
+            return res.status(400).json({ success: false, message: "Invalid productId" });
 
-    const cart = await Cart.findOne({ userId });
-    if (!cart)
-      return res.status(404).json({ success: false, message: "Cart not found" });
+        const cart = await Cart.findOne({ userId });
+        if (!cart)
+            return res.status(404).json({ success: false, message: "Cart not found" });
 
-    cart.products = cart.products.filter(
-      (item) => item.productId.toString() !== productId
-    );
+        cart.products = cart.products.filter(
+            (item) => item.productId.toString() !== productId
+        );
 
-    cart.totalAmount = cart.products.reduce(
-      (sum, p) => sum + (p.price * p.quantity),
-      0
-    );
+        cart.totalAmount = cart.products.reduce(
+            (sum, p) => sum + (p.price * p.quantity),
+            0
+        );
 
-    await cart.save();
-    
-    const updatedCart = await Cart.findOne({ userId }).populate("products.productId");
+        await cart.save();
 
-    return res.status(200).json({ success: true, data: updatedCart });
-  } 
-  catch (err) {
-    console.error("Error removing product:", err);
-    return res.status(500).json({ success: false, message: "Error removing product from cart" });
-  }
+        const updatedCart = await Cart.findOne({ userId }).populate("products.productId");
+
+        return res.status(200).json({ success: true, data: updatedCart });
+    }
+    catch (err) {
+        console.error("Error removing product:", err);
+        return res.status(500).json({ success: false, message: "Error removing product from cart" });
+    }
 };

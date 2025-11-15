@@ -38,3 +38,7 @@ const Product = mongoose.model("Product", productSchema);
 // productschema - It describes the shape of the documents in the products collection (fields, types, validations, defaults, etc.).
 
 export default Product;
+
+// mongoose schema =>
+// First Argument → Schema Definition (fields) - What properties your document will have.
+// Second Argument → Schema Options (configuration) - How the schema should behave.

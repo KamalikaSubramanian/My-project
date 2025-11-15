@@ -1,3 +1,4 @@
+// If you call authorizeRoles("admin", "manager")→ allowedRoles = ["admin", "manager"] .Without the spread operator,You would be forced to allow only ONE role.
 const authorizeRoles = (...allowedRoles)=>{
     return(req,res,next)=>{
         if(!allowedRoles.includes(req.user.role)){

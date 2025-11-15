@@ -17,7 +17,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5001;
 
-
+// Middleware - cors
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
   : [];
@@ -38,7 +38,7 @@ app.use(
   })
 );
 
-// Middleware - in which allows json in req.body.
+// Middleware - in which allows/parse json in req.body.
 app.use(express.json());
 
 // API routes
@@ -72,3 +72,4 @@ connectDB()
 // Frontend (ProtectedRoute.jsx) → UX-based security (hides restricted pages).
 
 // Backend (authMiddleware.js + roleMiddleware.js) → real security (stops unauthorized API access even if someone manipulates the frontend).
+// A stack trace tells you the path of function calls that led to an error — including file name and line number.

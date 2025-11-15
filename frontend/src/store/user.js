@@ -22,10 +22,11 @@ export const useUserStore = create((set) => ({
             if (!data.success){
                 return { success: false, message: data.message };
             }      
-            set({token:data.token})
-            localStorage.setItem("role", data.role);  
-            localStorage.setItem("token",data.token);   
-            return { success: true, message: "User registered successfully",role:data.role };
+            // set({token:data.token})
+            // localStorage.setItem("role", data.role);  
+            // localStorage.setItem("token",data.token);   
+            return { success: true, message: "User registered successfully" };
+            // role:data.role
         }
         catch (err) {
             set({ error: err.message });
@@ -44,7 +45,11 @@ export const useUserStore = create((set) => ({
                 return {success:false,message:data.message};
             }
                 
-            set({ user: data.user, token: data.token, error: null });
+            set({ 
+                user: data.user, 
+                token: data.token, 
+                error: null 
+            });
             localStorage.setItem("token", data.token);
             localStorage.setItem("role", data.user.role);
             localStorage.setItem("userId", data.user._id);
@@ -58,7 +63,9 @@ export const useUserStore = create((set) => ({
     },
     logOutUser:async()=>{
         localStorage.removeItem("token")
-        set({user:null,token:null})
+        localStorage.removeItem("role");
+        localStorage.removeItem("userId");
+        set({user:null,token:null, error: null})
     }
 
 }))

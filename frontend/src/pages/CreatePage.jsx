@@ -25,7 +25,7 @@ const CreatePage = () => {
 
 	const toast = useToast();
 	const [errors, setErrors] = useState({});
-	const { createProduct } = useProductStore();
+	const createProduct = useProductStore((state) => state.createProduct);
 
 	const validateForm = () => {
 		const newErrors = {};
@@ -103,89 +103,89 @@ const CreatePage = () => {
 					rounded="lg"
 					shadow="md"
 				>
-						<VStack spacing={5}>
+					<VStack spacing={5}>
 
-							<FormControl isRequired isInvalid={!!errors.name}>
-								<FormLabel>Product Name</FormLabel>
-								<Input
-									placeholder="Enter product name"
-									value={newProduct.name}
-									onChange={(e) =>
-										setNewProduct({ ...newProduct, name: e.target.value })
-										// spreading newProduct and get only the name and save the value once Onchange happens in that particular input field.
-									}
-								/>
-								<FormErrorMessage>{errors.name}</FormErrorMessage>
-							</FormControl>
+						<FormControl isRequired isInvalid={!!errors.name}>
+							<FormLabel>Product Name</FormLabel>
+							<Input
+								placeholder="Enter product name"
+								value={newProduct.name}
+								onChange={(e) =>
+									setNewProduct({ ...newProduct, name: e.target.value })
+									// spreading newProduct and get only the name and save the value once Onchange happens in that particular input field.
+								}
+							/>
+							<FormErrorMessage>{errors.name}</FormErrorMessage>
+						</FormControl>
 
-							<FormControl isRequired isInvalid={!!errors.price}>
-								<FormLabel>Price</FormLabel>
-								<Input
-									type="number"
-									placeholder="Enter price"
-									value={newProduct.price}
-									onChange={(e) =>
-										setNewProduct({ ...newProduct, price: e.target.value })
-									}
-								/>
-								<FormErrorMessage>{errors.price}</FormErrorMessage>
-							</FormControl>
+						<FormControl isRequired isInvalid={!!errors.price}>
+							<FormLabel>Price</FormLabel>
+							<Input
+								type="number"
+								placeholder="Enter price"
+								value={newProduct.price}
+								onChange={(e) =>
+									setNewProduct({ ...newProduct, price: e.target.value })
+								}
+							/>
+							<FormErrorMessage>{errors.price}</FormErrorMessage>
+						</FormControl>
 
-							<FormControl isRequired isInvalid={!!errors.image}>
-								<FormLabel>Image URL</FormLabel>
-								<Input
-									placeholder="Enter image URL"
-									value={newProduct.image}
-									onChange={(e) =>
-										setNewProduct({ ...newProduct, image: e.target.value })
-									}
-								/>
-								<FormErrorMessage>{errors.image}</FormErrorMessage>
-							</FormControl>
+						<FormControl isRequired isInvalid={!!errors.image}>
+							<FormLabel>Image URL</FormLabel>
+							<Input
+								placeholder="Enter image URL"
+								value={newProduct.image}
+								onChange={(e) =>
+									setNewProduct({ ...newProduct, image: e.target.value })
+								}
+							/>
+							<FormErrorMessage>{errors.image}</FormErrorMessage>
+						</FormControl>
 
-							<FormControl isRequired isInvalid={!!errors.type}>
-								<FormLabel>Type</FormLabel>
-								<Input
-									placeholder="Enter product type"
-									value={newProduct.type}
-									onChange={(e) =>
-										setNewProduct({ ...newProduct, type: e.target.value })
-									}
-								/>
-								<FormErrorMessage>{errors.type}</FormErrorMessage>
-							</FormControl>
+						<FormControl isRequired isInvalid={!!errors.type}>
+							<FormLabel>Type</FormLabel>
+							<Input
+								placeholder="Enter product type"
+								value={newProduct.type}
+								onChange={(e) =>
+									setNewProduct({ ...newProduct, type: e.target.value })
+								}
+							/>
+							<FormErrorMessage>{errors.type}</FormErrorMessage>
+						</FormControl>
 
-							<FormControl isRequired isInvalid={!!errors.description}>
-								<FormLabel>Description</FormLabel>
-								<Input
-									placeholder="Enter description"
-									value={newProduct.description}
-									onChange={(e) =>
-										setNewProduct({ ...newProduct, description: e.target.value })
-									}
-								/>
-								<FormErrorMessage>{errors.description}</FormErrorMessage>
-							</FormControl>
+						<FormControl isRequired isInvalid={!!errors.description}>
+							<FormLabel>Description</FormLabel>
+							<Input
+								placeholder="Enter description"
+								value={newProduct.description}
+								onChange={(e) =>
+									setNewProduct({ ...newProduct, description: e.target.value })
+								}
+							/>
+							<FormErrorMessage>{errors.description}</FormErrorMessage>
+						</FormControl>
 
-							<FormControl isRequired isInvalid={!!errors.deliveryTime}>
-								<FormLabel>Delivery Time</FormLabel>
-								<Input
-									placeholder="Enter delivery time"
-									value={newProduct.deliveryTime}
-									onChange={(e) =>
-										setNewProduct({
-											...newProduct,
-											deliveryTime: e.target.value,
-										})
-									}
-								/>
-								<FormErrorMessage>{errors.deliveryTime}</FormErrorMessage>
-							</FormControl>
+						<FormControl isRequired isInvalid={!!errors.deliveryTime}>
+							<FormLabel>Delivery Time</FormLabel>
+							<Input
+								placeholder="Enter delivery time"
+								value={newProduct.deliveryTime}
+								onChange={(e) =>
+									setNewProduct({
+										...newProduct,
+										deliveryTime: e.target.value,
+									})
+								}
+							/>
+							<FormErrorMessage>{errors.deliveryTime}</FormErrorMessage>
+						</FormControl>
 
-							<Button colorScheme="blue" type="submit" w="full" onClick={handleAddProduct}>
-								Add Product
-							</Button>
-						</VStack>
+						<Button colorScheme="blue" type="submit" w="full" onClick={handleAddProduct}>
+							Add Product
+						</Button>
+					</VStack>
 				</Box>
 			</VStack>
 		</Container>

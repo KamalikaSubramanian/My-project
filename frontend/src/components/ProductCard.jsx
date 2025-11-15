@@ -30,7 +30,9 @@ const ProductCard = ({ product }) => {
   const [updatedProduct, setUpdatedProduct] = useState(product);
   const [errors, setErrors] = useState({});
 
-  const { deleteProduct, updateProduct } = useProductStore();
+  const deleteProduct = useProductStore((state)=>state.deleteProduct);
+  const updateProduct = useProductStore((state)=>state.updateProduct);
+  
   const toast = useToast();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
