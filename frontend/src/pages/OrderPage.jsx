@@ -24,8 +24,10 @@ const OrderPage = () => {
   const toast = useToast();
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
-  const { cart, fetchCart } = useCartStore();
-  const { placeOrder } = useOrderStore();
+
+  const cart = useCartStore((state) => state.cart);
+  const fetchCart = useCartStore((state) => state.fetchCart);
+  const placeOrder = useOrderStore((state) => state.placeOrder);
 
   const [loading, setLoading] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);

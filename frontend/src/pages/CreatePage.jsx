@@ -28,7 +28,7 @@ const CreatePage = () => {
 	const createProduct = useProductStore((state) => state.createProduct);
 
 	const validateForm = () => {
-		const newErrors = {};
+		const newErrors = {}; 
 
 		if (!newProduct.name.trim()) {
 			newErrors.name = "Product name is required";

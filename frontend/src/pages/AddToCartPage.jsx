@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { shallow } from "zustand/shallow";
+// It prevents re-renders when the same shape of object is returned.
 import {
   Box,
   VStack,
@@ -19,7 +21,17 @@ const AddToCartPage = () => {
   const navigate = useNavigate();
   const toast = useToast();
 
-  const { cart, fetchCart, loading, updateQuantity, removeItem } = useCartStore();
+const { cart, fetchCart, loading, updateQuantity, removeItem } =
+  useCartStore(
+    (state) => ({
+      cart: state.cart,
+      fetchCart: state.fetchCart,
+      loading: state.loading,
+      updateQuantity: state.updateQuantity,
+      removeItem: state.removeItem,
+    }),
+    shallow
+  );
 
   useEffect(() => {
     if (userId) fetchCart(userId);

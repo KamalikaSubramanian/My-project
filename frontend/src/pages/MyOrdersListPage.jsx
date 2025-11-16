@@ -19,7 +19,10 @@ import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const MyOrdersListPage = () => {
   const userId = localStorage.getItem("userId");
-  const { orders, fetchOrderByUser, loading } = useOrderStore();
+  const orders = useOrderStore((state)=>state.orders);
+  const fetchOrderByUser = useOrderStore((state)=>state.fetchOrderByUser);
+  const loading = useOrderStore((state)=>state.loading);
+
 
   useEffect(() => {
     if (userId) fetchOrderByUser(userId);

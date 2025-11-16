@@ -18,7 +18,10 @@ import { RiShoppingBagFill } from "react-icons/ri";
 
 const UserProductPage = () => {
   const [selectedType, setSelectedType] = useState("All");
-  const { fetchProducts, products } = useProductStore();
+
+  const fetchProducts = useProductStore((state)=>state.fetchProducts);
+  const products = useProductStore((state)=>state.products);
+  
   const navigate = useNavigate();
 
   useEffect(() => {

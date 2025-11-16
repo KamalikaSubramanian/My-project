@@ -14,7 +14,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const AdminProductDetailPage = () => {
   const { id } = useParams();
-  const { selectedProduct, fetchProductById } = useProductStore();
+  const selectedProduct = useProductStore((state)=>state.selectedProduct);
+  const fetchProductById = useProductStore((state)=>state.fetchProductById);
   const navigate = useNavigate();
 
   useEffect(() => {

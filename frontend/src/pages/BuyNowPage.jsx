@@ -24,7 +24,7 @@ const BuyNowPage = () => {
   const userId = localStorage.getItem("userId");
   const toast = useToast();
   const navigate = useNavigate();
-  const { placeOrder } = useOrderStore();
+  const placeOrder = useOrderStore((state) => state.placeOrder);
 
   const [loading, setLoading] = useState(false);
   const [address, setAddress] = useState({

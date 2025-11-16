@@ -18,8 +18,11 @@ import { useCartStore } from "../store/cart.js";
 
 const UserProductDetailPage = () => {
   const { id } = useParams();
-  const { selectedProduct, fetchProductById } = useProductStore();
-  const { addToCart } = useCartStore();
+
+  const selectedProduct = useProductStore((state)=>state.selectedProduct);
+  const fetchProductById = useProductStore((state)=>state.fetchProductById);
+  const addToCart= useProductStore((state)=>state.addToCart);
+
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const role = localStorage.getItem("role");
