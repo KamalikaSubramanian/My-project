@@ -116,12 +116,12 @@ const LoginPage = () => {
           <FormControl id="name" isRequired isInvalid={!!errors.username}>
             {/* isRequired Marks field as mandatory, Adds red asterisk */}
             {/* errors.password → if there’s an error message (e.g. "Password is required")
-!!errors.password → converts it to a boolean
-!!"Password is required" → true
-!!undefined → false
-If errors.password exists → isInvalid={true} */}
-{/* !!value - “convert value to true/false” - boolean version ,Two NOTs cancel each other out —
-but in the process, it forces a value to become a boolean.*/}
+            !!errors.password → converts it to a boolean
+            !!"Password is required" → true
+            !!undefined → false
+            If errors.password exists → isInvalid={true} */}
+            {/* !!value - “convert value to true/false” - boolean version ,Two NOTs cancel each other out —
+            but in the process, it forces a value to become a boolean.*/}
             <FormLabel>Username</FormLabel>
             <Input
               type="text"
@@ -153,6 +153,7 @@ but in the process, it forces a value to become a boolean.*/}
 };
 
 export default LoginPage;
+
 // You click Login.
 
 // handleLogin() runs.

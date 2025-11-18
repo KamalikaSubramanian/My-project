@@ -21,7 +21,7 @@ const UserProductDetailPage = () => {
 
   const selectedProduct = useProductStore((state)=>state.selectedProduct);
   const fetchProductById = useProductStore((state)=>state.fetchProductById);
-  const addToCart= useProductStore((state)=>state.addToCart);
+  const addToCart= useCartStore((state)=>state.addToCart);
 
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
@@ -102,7 +102,6 @@ const UserProductDetailPage = () => {
           alignItems="center"
           justifyContent="center"
         >
-          {/* Product Image */}
           <Box flex="1" textAlign="center">
             <Image
               src={selectedProduct.image}
@@ -116,7 +115,6 @@ const UserProductDetailPage = () => {
             />
           </Box>
 
-          {/* Product Info */}
           <VStack flex="1" align="flex-start" spacing={4}>
             <Text fontSize="3xl" fontWeight="bold" color="blue.700">
               {selectedProduct.name}
@@ -154,6 +152,10 @@ const UserProductDetailPage = () => {
                 onClick={() =>
                   navigate("/buyNow", { state: { product: selectedProduct } })
                 }
+                // state:A special object provided by React Router to pass data to another page.
+                // You are passing one property:
+                // product → the key (name)
+                // selectedProduct → the variable you are sending
               >
                 Buy Now
               </Button>

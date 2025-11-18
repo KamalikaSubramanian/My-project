@@ -19,9 +19,9 @@ import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 const MyOrdersListPage = () => {
   const userId = localStorage.getItem("userId");
-  const orders = useOrderStore((state)=>state.orders);
-  const fetchOrderByUser = useOrderStore((state)=>state.fetchOrderByUser);
-  const loading = useOrderStore((state)=>state.loading);
+  const orders = useOrderStore((state) => state.orders);
+  const fetchOrderByUser = useOrderStore((state) => state.fetchOrderByUser);
+  const loading = useOrderStore((state) => state.loading);
 
 
   useEffect(() => {
@@ -54,10 +54,10 @@ const MyOrdersListPage = () => {
         alignItems="center"
         justifyContent="center"
         bgImage="url('https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZCUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D')"
-			bgSize="cover"
-			bgPosition="center"
-			bgRepeat="no-repeat"
-			bgAttachment="fixed"
+        bgSize="cover"
+        bgPosition="center"
+        bgRepeat="no-repeat"
+        bgAttachment="fixed"
         textAlign="center"
       >
         <Text fontSize="3xl" fontWeight="bold" color="purple.600">
@@ -69,10 +69,10 @@ const MyOrdersListPage = () => {
 
   return (
     <Box p={8} minH="100vh" bgImage="url('https://images.unsplash.com/photo-1487147264018-f937fba0c817?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmFja2dyb3VuZCUyMGRlc2lnbnxlbnwwfHwwfHx8MA%3D%3D')"
-			bgSize="cover"
-			bgPosition="center"
-			bgRepeat="no-repeat"
-			bgAttachment="fixed">
+      bgSize="cover"
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bgAttachment="fixed">
       <Text
         fontSize="3xl"
         fontWeight="bold"
@@ -132,15 +132,6 @@ const MyOrdersListPage = () => {
                     </Text>
                   </Text>
 
-                  {order.deliveryDate && (
-                    <Text fontSize="sm" color="gray.600">
-                      Delivery Date:{" "}
-                      <Text as="span" fontWeight="medium" color="blue.600">
-                        {new Date(order.deliveryDate).toDateString()}
-                      </Text>
-                    </Text>
-                  )}
-
                   <Divider />
 
                   {order.address && (
@@ -189,9 +180,9 @@ const MyOrdersListPage = () => {
 
                   <VStack align="stretch" spacing={3}>
                     {Array.isArray(order.products) &&
-                      order.products.map((p, idx) => (
+                      order.products.map((p, id) => (
                         <HStack
-                          key={p._id || idx}
+                          key={p._id || id}
                           spacing={4}
                           p={3}
                           borderWidth="1px"

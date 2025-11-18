@@ -95,7 +95,6 @@ export const useCartStore = create((set) => ({
         set({ cart: data.data });
         return { success: true, message: data.message || "Product removed from cart" };
       }
-
       return { success: false, message: data.message || "Failed to remove product." };
     }
     catch (err) {

@@ -15,7 +15,7 @@ const AdminProductPage = () => {
 		fetchProducts();
 	}, [fetchProducts]);
 
-	const filteredProducts = selectedType === "All" ? products : products.filter((p) => p.type === selectedType)
+	const filteredProducts = selectedType === "All" ? products : products.filter((p) => p.type === selectedType);
 	console.log("Filtered Products:", filteredProducts)
 
 	const navigate = useNavigate();

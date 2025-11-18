@@ -30,9 +30,9 @@ const ProductCard = ({ product }) => {
   const [updatedProduct, setUpdatedProduct] = useState(product);
   const [errors, setErrors] = useState({});
 
-  const deleteProduct = useProductStore((state)=>state.deleteProduct);
-  const updateProduct = useProductStore((state)=>state.updateProduct);
-  
+  const deleteProduct = useProductStore((state) => state.deleteProduct);
+  const updateProduct = useProductStore((state) => state.updateProduct);
+
   const toast = useToast();
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -40,12 +40,23 @@ const ProductCard = ({ product }) => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!updatedProduct.name.trim()) newErrors.name = "Product name is required";
-    if (!updatedProduct.price.toString().trim()) newErrors.price = "Price is required";
-    if (!updatedProduct.image.trim()) newErrors.image = "Image URL is required";
-    if (!updatedProduct.type.trim()) newErrors.type = "Type is required";
-    if (!updatedProduct.description.trim()) newErrors.description = "Description is required";
-    if (!updatedProduct.deliveryTime.trim()) newErrors.deliveryTime = "Delivery time is required";
+    if (!updatedProduct.name.trim()) 
+      newErrors.name = "Product name is required";
+
+    if (!updatedProduct.price.toString().trim()) 
+      newErrors.price = "Price is required";
+
+    if (!updatedProduct.image.trim()) 
+      newErrors.image = "Image URL is required";
+
+    if (!updatedProduct.type.trim()) 
+      newErrors.type = "Type is required";
+
+    if (!updatedProduct.description.trim()) 
+      newErrors.description = "Description is required";
+
+    if (!updatedProduct.deliveryTime.trim()) 
+      newErrors.deliveryTime = "Delivery time is required";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -66,6 +77,18 @@ const ProductCard = ({ product }) => {
     if (!validateForm()) return;
 
     const { success, message } = await updateProduct(pid, updatedProduct);
+
+    if (success) {
+      setUpdatedProduct({
+        name: "",
+        price: "",
+        image: "",
+        type: "",
+        description: "",
+        deliveryTime: "",
+      });
+    }
+
     onClose();
 
     toast({
@@ -77,6 +100,10 @@ const ProductCard = ({ product }) => {
     });
   };
 
+  const handleOpenModal = () => {
+    setUpdatedProduct(product);
+    onOpen();
+  };
   return (
     <Box
       shadow="lg"
@@ -84,7 +111,6 @@ const ProductCard = ({ product }) => {
       overflow="hidden"
       transition="all 0.3s"
       _hover={{ transform: "translateY(-5px)", shadow: "xl" }}
-      bg={bg}
     >
       <Image
         src={product.image}
@@ -108,12 +134,15 @@ const ProductCard = ({ product }) => {
           {product.name}
         </Heading>
 
-        <Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
+        <Text fontWeight="bold" fontSize="xl" mb={4}>
           ₹{product.price}
         </Text>
 
         <HStack spacing={2}>
-          <IconButton icon={<EditIcon />} onClick={onOpen} colorScheme="blue" />
+          <IconButton
+            icon={<EditIcon />}
+            onClick={handleOpenModal}
+            colorScheme="blue" />
           <IconButton
             icon={<DeleteIcon />}
             onClick={() => handleDeleteProduct(product._id)}
@@ -230,3 +259,20 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+// When Edit icon is clicked:
+// onOpen();
+
+
+// → sets isOpen = true
+// → Modal appears.
+
+// When user clicks Cancel:
+// onClose();
+
+
+// → sets isOpen = false
+// → Modal disappears.
+
+// isOpen
+// A boolean (true / false)
+// Tells whether a modal/drawer is currently open.
