@@ -76,3 +76,4 @@ export const getProductsById = async (req, res) => {
 		res.status(500).json({ success: false, message: err.message });
 	}
 } 
+// { new: true } - “Return the updated document instead of the old one.”

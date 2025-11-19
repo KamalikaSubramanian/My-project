@@ -73,3 +73,5 @@ connectDB()
 
 // Backend (authMiddleware.js + roleMiddleware.js) → real security (stops unauthorized API access even if someone manipulates the frontend).
 // A stack trace tells you the path of function calls that led to an error — including file name and line number.
+// process is a built-in global object that represents the current running program.The controller of the Node.js application.
+// app.use() is used to apply middleware to your entire Express app.

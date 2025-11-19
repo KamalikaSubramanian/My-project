@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { User } from "../models/userModel.js";
@@ -60,7 +59,6 @@ export const login = async (req, res) => {
         return res.status(500).json({ success: false, message: "Something went wrong" });
     }
 };
-
 
 // Hashing is the process of converting input data (like a password or file) into a fixed-length string of characters using a mathematical algorithm.
 // No matter the input size, the hash length is always the same.Hashing → irreversible (you cannot get the password back from the hash)
