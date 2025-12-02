@@ -42,3 +42,6 @@ export default Product;
 // mongoose schema =>
 // First Argument → Schema Definition (fields) - What properties your document will have.
 // Second Argument → Schema Options (configuration) - How the schema should behave.
+// export default lets you import without curly braces and allows any name.
+// export requires curly braces and the exact name.
+// Curly braces in import/export mean you are using named exports—you must use the exact name.
