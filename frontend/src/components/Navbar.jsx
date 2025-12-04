@@ -1,12 +1,13 @@
 import { Button, Container, HStack, Text,  Grid, Box } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
+import { useUserStore } from '../store/user.js';
 
 const Navbar = () => {
+	const logOutUser = useUserStore((state)=>state. logOutUser);
 	const token = localStorage.getItem("token");
 	const navigate = useNavigate()
 	const handleLogOut = () => {
-		localStorage.removeItem("token")
-		localStorage.removeItem("user")
+		logOutUser();
 		navigate("/")
 	}
 

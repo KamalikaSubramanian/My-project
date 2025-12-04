@@ -48,3 +48,12 @@ export const getOrdersByUser = async (req, res) => {
         return res.status(500).json({ message: "Error fetching orders", err });
     }
 }
+// A. Frontend sends product like this:
+// { productId: { _id: "673..." } }
+// Then item.productId?._id returns the value.
+
+// B. Frontend sends product like this:
+// { productId: "673..." }
+// Then item.productId is used.
+
+// || chooses whichever exists.

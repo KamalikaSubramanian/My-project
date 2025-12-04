@@ -29,7 +29,7 @@ const productSubSchema = new mongoose.Schema({
     quantity: {
         type: Number,
         required: true,
-        default:1,
+        default: 1,
     },
     image: {
         type: String,
@@ -41,6 +41,7 @@ const productSubSchema = new mongoose.Schema({
         default: "",
     },
 }, { _id: false })
+
 const cartSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -49,9 +50,18 @@ const cartSchema = new mongoose.Schema({
         required: [true, "User ID is required"]
     },
     products: [productSubSchema],
-    totalAmount: { type: Number, required: true, default: 0, min: [0, "Total amount cannot be negative"] },
-    status: { type: String, default: "In cart" },
-}, { timestamps: true });
+    totalAmount: {
+        type: Number,
+        required: true,
+        default: 0,
+        min: [0, "Total amount cannot be negative"]
+    },
+    status: {
+        type: String,
+        default: "In cart"
+    },
+},
+    { timestamps: true });
 
 const Cart = mongoose.model("Cart", cartSchema);
 

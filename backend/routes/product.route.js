@@ -19,3 +19,8 @@ router.delete("/:id", authorizeRoles("admin"), deleteProduct);
 export default router;
 
 // router is a object which contains relative routes in a combined manner.Organize routes by feature (products, users, orders, etc.).
+// A dynamic value means a value that changes every time based on the request.
+// : symbol is used specifically to define a dynamic variable in the URL.
+// ":id" is a route parameter.
+// 👉 Whatever comes in that part of the URL will be captured as a variable
+// 👉 And stored inside req.params.id

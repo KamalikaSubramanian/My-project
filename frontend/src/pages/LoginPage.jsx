@@ -23,8 +23,6 @@ const LoginPage = () => {
 
   const loginUser = useUserStore((state) => state.loginUser)
 
-  // “From my Zustand store, give me access to the loginUser() function (so I can trigger login) and also the error variable (so I can read any login or registration errors).”
-
   const toast = useToast();
 
   const validateForm = () => {

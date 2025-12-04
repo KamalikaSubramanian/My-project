@@ -74,8 +74,18 @@ connectDB()
 // Backend (authMiddleware.js + roleMiddleware.js) → real security (stops unauthorized API access even if someone manipulates the frontend).
 // A stack trace tells you the path of function calls that led to an error — including file name and line number.
 // process is a built-in global object that represents the current running program.The controller of the Node.js application.
+// app.listen() a method to start the server and listen it on a port 3000.
 // app.use() is used to apply middleware to your entire Express app.
+// callback() is a function passed by CORS to your origin function.
+// The callback function takes 2 arguments:
+// callback(error, allowOrigin)
 
+// error:
+// If there’s an error (you want to block the origin), pass an Error object.
+// If no error (you allow the request), pass null.
 
+// allowOrigin:
+// If allowed, pass the origin string.
+// If blocked, you don’t need this argument.
 
 // dev - to start development, build - to generate production files, lint - to check code quality and errors, and preview - to test production build locally.

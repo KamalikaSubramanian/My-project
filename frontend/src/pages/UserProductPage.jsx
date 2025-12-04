@@ -108,7 +108,6 @@ const UserProductPage = () => {
           bg="white"
           borderColor="teal.400"
           _hover={{ borderColor: "teal.500", boxShadow: "0 0 8px teal" }}
-          _focus={{ borderColor: "teal.600", boxShadow: "0 0 8px teal" }}
         >
           <option value="All">All</option>
           <option value="Gadgets">Gadgets</option>

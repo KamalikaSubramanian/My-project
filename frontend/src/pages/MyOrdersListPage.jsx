@@ -25,7 +25,8 @@ const MyOrdersListPage = () => {
 
 
   useEffect(() => {
-    if (userId) fetchOrderByUser(userId);
+    if (userId) 
+      fetchOrderByUser(userId);
   }, [userId, fetchOrderByUser]);
 
   if (loading)

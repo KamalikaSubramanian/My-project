@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { shallow } from "zustand/shallow";
-// It prevents re-renders when the same shape of object is returned.
+// shallow checks if only the values changed, not the entire object reference.
 import {
   Box,
   VStack,
@@ -34,7 +34,8 @@ const { cart, fetchCart, loading, updateQuantity, removeItem } =
   );
 
   useEffect(() => {
-    if (userId) fetchCart(userId);
+    if (userId) 
+      fetchCart(userId);
   }, [userId, fetchCart]);
 
   const handleQuantityChange = async (productId, action) => {
