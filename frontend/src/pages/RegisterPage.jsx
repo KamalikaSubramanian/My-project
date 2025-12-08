@@ -22,12 +22,12 @@ const RegisterPage = () => {
   const [newUser, setNewUser] = useState({
     username: "",
     password: "",
-    role: ""
+    role: "admin"
   })
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const registerUser = useUserStore((state) => state.registerUser);
-  
+
   const toast = useToast();
   const navigate = useNavigate();
 
