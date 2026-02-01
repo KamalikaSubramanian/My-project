@@ -74,7 +74,7 @@ export const getCart = async (req, res) => {
         return res.status(200).json({ success: true, data: cart });
     }
     catch (err) {
-        onsole.error("Error fetching cart:", err);
+        console.error("Error fetching cart:", err);
         return res.status(500).json({ success: false, message: "Error fetching cart" });
     }
 }
