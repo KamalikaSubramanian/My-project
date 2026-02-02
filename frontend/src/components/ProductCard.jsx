@@ -276,3 +276,7 @@ export default ProductCard;
 // isOpen
 // A boolean (true / false)
 // Tells whether a modal/drawer is currently open.
+
+// onOpen()  → isOpen = true  → Modal opens
+// onClose() → isOpen = false → Modal closes
+// isOpen controls the visibility of the modal, onOpen opens it by setting isOpen to true, and onClose closes it by setting isOpen to false.

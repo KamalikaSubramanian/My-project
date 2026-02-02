@@ -5,7 +5,6 @@ import {
   CardFooter,
   Heading,
   Text,
-  Button,
   Stack,
 } from "@chakra-ui/react";
 
@@ -43,23 +42,13 @@ const HomePage = () => {
               🎉 Limited Time Offer: Get 40% OFF on your Pongal purchase!
             </Text>
             <Text fontSize="sm" color="gray.600">
-             <i>Register to explore exclusive deals or create a new account and
-              start shopping today.</i>
+              <i>Register to explore exclusive deals or create a new account and
+                start shopping today.</i>
             </Text>
           </Stack>
         </CardBody>
 
         <CardFooter justify="center" gap={4} color="red.500">
-          {/* <Link to={'/register'}>
-            <Button colorScheme="blue" variant="solid">
-              Register
-            </Button>
-          </Link>
-          <Link to={'/login'}>
-            <Button colorScheme="teal" variant="outline">
-              Login
-            </Button>
-          </Link> */}
           <b>Enjoy your shopping with wide range of products.</b>
         </CardFooter>
       </Card>
@@ -69,3 +58,4 @@ const HomePage = () => {
 
 export default HomePage;
 
+//  spacing= 1 = 8px

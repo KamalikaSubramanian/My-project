@@ -28,9 +28,6 @@ const Navbar = () => {
 					</Text>
 				</Box>
 				<HStack justify="flex-end" spacing={4}>
-					{/* <Button colorScheme="teal" >
-						<Link to="/"><FaHome /></Link>
-					</Button> */}
 					{!token && (
 						<>
 							<Button colorScheme="teal" >

@@ -101,7 +101,7 @@ export const updateCartQuantity = async (req, res) => {
         else if (action === "decrease") {
             if (item.quantity > 1)
                 item.quantity -= 1
-            else
+            else // When quantity is 1
                 cart.products = cart.products.filter((p) => p.productId.toString() !== productId)
         }
         else {
@@ -154,3 +154,5 @@ export const removeFromCart = async (req, res) => {
         return res.status(500).json({ success: false, message: "Error removing product from cart" });
     }
 };
+
+// populate() takes a string path that represents the schema field to be populated, so nested paths like products.productId must be passed as a string.

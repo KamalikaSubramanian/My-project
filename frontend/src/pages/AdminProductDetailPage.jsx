@@ -111,4 +111,5 @@ const AdminProductDetailPage = () => {
 };
 
 export default AdminProductDetailPage;
+// flex: 1 1 0%;
 

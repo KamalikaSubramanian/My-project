@@ -38,7 +38,7 @@ app.use(
   })
 );
 
-// Middleware - in which allows/parse json in req.body.
+// Middleware - in which allows/parse incoming json in req.body.
 app.use(express.json());
 
 // API routes
@@ -76,6 +76,7 @@ connectDB()
 // process is a built-in global object that represents the current running program.The controller of the Node.js application.
 // app.listen() a method to start the server and listen it on a port 3000.
 // app.use() is used to apply middleware to your entire Express app.
+
 // callback() is a function passed by CORS to your origin function.
 // The callback function takes 2 arguments:
 // callback(error, allowOrigin)
@@ -89,3 +90,6 @@ connectDB()
 // If blocked, you don’t need this argument.
 
 // dev - to start development, build - to generate production files, lint - to check code quality and errors, and preview - to test production build locally.
+
+// app.use("base path/url", middleware, router object);
+// Credentials =🍪 Cookies, 🔐 Authorization headers (JWT, Bearer tokens),🆔 TLS client certificates (rare)

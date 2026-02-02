@@ -167,3 +167,7 @@ export default LoginPage;
 // You get back { success, message }
 
 // If login fails, error will contain the error text, which you can display to the user.
+
+// When isInvalid is true:
+// Input gets red border
+// Error message becomes visible

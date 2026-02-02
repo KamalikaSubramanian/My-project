@@ -7,10 +7,10 @@ export const placeOrder = async (req, res) => {
 
         console.log("Order being sent:", { userId, products, address, paymentMethod });
 
-        if (!address || !address.name || !address.phone) {
+        if (!address || !address.name  || !address.street || !address.city || !address.state || !address.pincode || !address.phone) {
             return res.status(403).json({ success: false, message: "Details of address missing!" });
         }
-
+ 
         const totalAmount = products.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
 
         const order = new Order({
